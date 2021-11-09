@@ -3,39 +3,43 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from 'react-router-dom';
 import About from './About';
 import Contact from './Contact';
 import Home from './Home';
 import Blog from './Blog';
+import Post from './Post';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
+      <div className="app">
+        <header className="nav">
           <nav>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
+              <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
+              <li><NavLink to="/blog" exact activeClassName="active">Blog</NavLink></li>
+              <li><NavLink to="/about" exact activeClassName="active">About</NavLink></li>
+              <li><NavLink to="/contact" exact activeClassName="active">Contact Us</NavLink></li>
             </ul>
           </nav>
         </header>
         <main>
           <Switch>
-            <Route path="/about">
+            <Route path="/about" exact>
               <About />
             </Route>
-            <Route path="/contact">
+            <Route path="/contact" exact>
               <Contact />
             </Route>
-            <Route path="/blog">
+            <Route path="/blog" exact>
               <Blog />
             </Route>
-            <Route path="/">
+            <Route path="/blog/post/:id" exact>
+              <Post />
+            </Route>
+            <Route path="/" exact>
               <Home />
             </Route>
           </Switch>

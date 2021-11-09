@@ -1,24 +1,15 @@
 import { rest } from 'msw';
-import faker from 'faker';
-
-// Providing a seed ensures stable data over app reloads
-faker.seed(5000);
-
-function createPost() {
-  return {
-    id: faker.datatype.uuid(),
-    text: faker.lorem.sentences(),
-    title: faker.lorem.words(),
-    timestamp: faker.date.past()
-  };
-}
-
-function createPosts() {
-  return [createPost(), createPost(), createPost()];
-}
+import data from './data.json';
 
 export const handlers = [
   rest.get('/api/', (req, res, ctx) => {
-    return res(ctx.json(createPosts()));
+    return res(ctx.json(data));
+  }),
+
+
+  rest.get('/api/:id', (req, res, ctx) => {
+    const { id } = req.params;
+    const post = data.find(post => post.id.toString() === id);
+    return res(ctx.json(post));
   }),
 ];

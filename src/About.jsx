@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const About = () => {
   const [loading, setLoading] = useState(true);
   const waitTime = Math.random() * 900;
 
-  setTimeout(() => {
-    setLoading(false);
-  }, waitTime);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, waitTime);
+  }, []);
 
   return <div>
     { loading ? 'Loading...' : 'About!' }

@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Blog = () => {
-  const [loading, setLoading] = useState(true);
-  const waitTime = Math.random() * 900;
+  const [posts, setPosts] = useState();
 
-  setTimeout(() => {
-    setLoading(false);
-  }, waitTime);
+  useEffect(() => {
+    fetch('/api')
+    .then(res => res.json())
+    .then(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }, [posts]);
+
 
   return <div>
-    { loading ? 'Loading...' : 'Blog!' }
+    Blog
   </div>;
 }
 

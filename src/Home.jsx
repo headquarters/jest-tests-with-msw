@@ -8,7 +8,7 @@ const Home = () => {
     setTimeout(() => {
       setLoading(false);
     }, waitTime);
-  }, []);
+  }, [waitTime]);
 
   return <div>
     { loading ? 'Loading...' : 'Home!' }

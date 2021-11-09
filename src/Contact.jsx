@@ -8,7 +8,7 @@ const Contact = () => {
     setTimeout(() => {
       setLoading(false);
     }, waitTime);
-  }, []);
+  }, [waitTime]);
 
   return <div>
     { loading ? 'Loading...' : 'Contact!' }

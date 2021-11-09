@@ -5,9 +5,13 @@ const About = () => {
   const waitTime = Math.random() * 900;
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setLoading(false);
     }, waitTime);
+
+    return function cleanup() {
+      clearTimeout(timeout);
+    }
   }, [waitTime]);
 
   return <div>

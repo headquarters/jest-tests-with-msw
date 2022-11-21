@@ -10,6 +10,7 @@ import Contact from './Contact';
 import Home from './Home';
 import Blog from './Blog';
 import Post from './Post';
+import NewPost from './NewPost';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <li><NavLink to="/contact" exact activeClassName="active">Contact Us</NavLink></li>
             </ul>
           </nav>
+          <NavLink to="/blog/post/new" exact activeClassName="active">Create New Post</NavLink>
         </header>
         <main>
           <Switch>
@@ -35,6 +37,9 @@ function App() {
             </Route>
             <Route path="/blog" exact>
               <Blog />
+            </Route>
+            <Route path="/blog/post/new" exact>
+              <NewPost />
             </Route>
             <Route path="/blog/post/:id" exact>
               <Post />
